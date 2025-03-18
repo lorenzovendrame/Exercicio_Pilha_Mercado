@@ -43,7 +43,7 @@ public class SistemaGerenciamento {
             if (!pilhaProduto.estaVazia()) {
                 //if (getEstoqueTotal() >= quantidadeVendida) {
                 if (pilhaProduto.getEstoque() >= quantidadeVendida) {
-                    pilhaProduto.setEstoque(pilha.getEstoque() - quantidadeVendida);
+                    pilhaProduto.setEstoque(pilhaProduto.getEstoque() - quantidadeVendida);
                     //setEstoqueTotal(getEstoqueTotal() - quantidadeVendida);
                 } else {
                     System.out.println("Não há estoque suficiente para vender " + quantidadeVendida + " unidades de " + produto);
