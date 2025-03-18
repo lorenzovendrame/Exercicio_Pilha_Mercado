@@ -12,22 +12,22 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(String nome, float precoCompra, float precoVenda, int quantidadeComprada, int quantidadeEstoque){
+    public Produto(String nome, float precoCompra, float precoVenda, int quantidadeComprada){
         data = new Date(System.currentTimeMillis());
         this.nome = nome;
         this.precoCompra = precoCompra;
         this.precoVenda = precoVenda;
         this.quantidadeComprada = quantidadeComprada;
-        this.quantidadeEstoque = quantidadeEstoque;
+        this.quantidadeEstoque = quantidadeComprada;
     }
 
-    public Produto(Date data, String nome, float precoCompra, float precoVenda, int quantidadeComprada, int quantidadeEstoque) {
+    public Produto(Date data, String nome, float precoCompra, float precoVenda, int quantidadeComprada) {
         this.data = data;
         this.nome = nome;
         this.precoCompra = precoCompra;
         this.precoVenda = precoVenda;
         this.quantidadeComprada = quantidadeComprada;
-        this.quantidadeEstoque = quantidadeEstoque;
+        this.quantidadeEstoque = quantidadeComprada;
     }
 
     public Date getData() {

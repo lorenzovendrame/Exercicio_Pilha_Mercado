@@ -1,5 +1,6 @@
 package com.example.aula_110325;
 
+import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,9 +42,6 @@ public class SistemaGerenciamento {
         if (estoquePorProduto.containsKey(produto)) {
             PilhaDinamica pilhaProduto = estoquePorProduto.get(produto);
             if (!pilhaProduto.estaVazia()) {
-                /*Compra ultimaCompra = pilhaProduto.ultimoElemento();
-                if (ultimaCompra.getEstoqueProduto() >= quantidadeVendida) {
-                    ultimaCompra.setEstoqueProduto(ultimaCompra.getEstoqueProduto() - quantidadeVendida);*/
                 if (getEstoqueTotal() >= quantidadeVendida) {
                     setEstoqueTotal(getEstoqueTotal() - quantidadeVendida);
                 } else {
@@ -64,8 +62,8 @@ public class SistemaGerenciamento {
             PilhaDinamica pilhaProduto = entry.getValue();
             if (!pilhaProduto.estaVazia()) {
                 Compra ultimaCompra = pilhaProduto.ultimoElemento();
-                //System.out.println("Quantidade em estoque: " + ultimaCompra.getEstoqueProduto());
-                System.out.println("Quantidade em estoque:" + getEstoqueTotal());
+                System.out.println("Data da compra: " + ultimaCompra.getDate().toString());
+                System.out.println("Quantidade em estoque: " + getEstoqueTotal());
                 System.out.println("Preço de venda: " + ultimaCompra.getProdutoValorVenda());
             } else {
                 System.out.println("Não há compras registradas");
