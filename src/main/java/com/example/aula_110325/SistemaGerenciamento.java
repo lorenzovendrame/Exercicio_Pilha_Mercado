@@ -1,15 +1,14 @@
 package com.example.aula_110325;
 
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SistemaGerenciamento {
     private PilhaDinamica pilha;
     private Map<String, PilhaDinamica> estoquePorProduto;
-    private int estoqueTotal;
+    //private int estoqueTotal;
 
-    public int getEstoqueTotal() {
+    /*public int getEstoqueTotal() {
         return estoqueTotal;
     }
 
@@ -19,12 +18,12 @@ public class SistemaGerenciamento {
 
     public void setEstoqueTotal (int estoqueTotal) {
         this.estoqueTotal = estoqueTotal;
-    }
+    }*/
 
     public SistemaGerenciamento() {
         this.pilha = new PilhaDinamica(10);
         this.estoquePorProduto = new HashMap<>();
-        this.estoqueTotal = 0;
+        //this.estoqueTotal = 0;
     }
 
     // Método para registrar uma compra
@@ -33,7 +32,7 @@ public class SistemaGerenciamento {
             estoquePorProduto.put(compra.getProdutoName(), new PilhaDinamica(10));
         }
         estoquePorProduto.get(compra.getProdutoName()).empilhar(compra);
-        addEstoqueTotal(estoquePorProduto.get(compra.getProdutoName()).ultimoElemento().getEstoqueProduto());
+        //addEstoqueTotal(estoquePorProduto.get(compra.getProdutoName()).ultimoElemento().getEstoqueProduto());//errado
         pilha.empilhar(compra);
     }
 
@@ -42,8 +41,10 @@ public class SistemaGerenciamento {
         if (estoquePorProduto.containsKey(produto)) {
             PilhaDinamica pilhaProduto = estoquePorProduto.get(produto);
             if (!pilhaProduto.estaVazia()) {
-                if (getEstoqueTotal() >= quantidadeVendida) {
-                    setEstoqueTotal(getEstoqueTotal() - quantidadeVendida);
+                //if (getEstoqueTotal() >= quantidadeVendida) {
+                if (pilhaProduto.getEstoque() >= quantidadeVendida) {
+                    pilhaProduto.setEstoque(pilha.getEstoque() - quantidadeVendida);
+                    //setEstoqueTotal(getEstoqueTotal() - quantidadeVendida);
                 } else {
                     System.out.println("Não há estoque suficiente para vender " + quantidadeVendida + " unidades de " + produto);
                 }
@@ -63,7 +64,8 @@ public class SistemaGerenciamento {
             if (!pilhaProduto.estaVazia()) {
                 Compra ultimaCompra = pilhaProduto.ultimoElemento();
                 System.out.println("Data da compra: " + ultimaCompra.getDate().toString());
-                System.out.println("Quantidade em estoque: " + getEstoqueTotal());
+                //System.out.println("Quantidade em estoque: " + getEstoqueTotal());
+                System.out.println("Quatidade em estoque: " + estoquePorProduto.get(ultimaCompra.getProdutoName()).getEstoque());
                 System.out.println("Preço de venda: " + ultimaCompra.getProdutoValorVenda());
             } else {
                 System.out.println("Não há compras registradas");

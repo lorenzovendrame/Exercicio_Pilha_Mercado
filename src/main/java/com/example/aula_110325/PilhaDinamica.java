@@ -3,10 +3,20 @@ package com.example.aula_110325;
 public class PilhaDinamica {
     private Compra[] pilha;
     private int tamanho;
+    private int estoque;
 
     public PilhaDinamica(int capacidadeInicial) {
         this.pilha = new Compra[capacidadeInicial];
         this.tamanho = 0;
+        this.estoque = 0;
+    }
+
+    public int getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(int estoque) {
+        this.estoque = estoque;
     }
 
     // Método para empilhar
@@ -16,6 +26,7 @@ public class PilhaDinamica {
         }
         pilha[tamanho] = compra;
         tamanho++;
+        this.estoque += compra.getEstoqueProduto();
     }
 
     // Método para desempilhar

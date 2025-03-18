@@ -21,15 +21,6 @@ public class Produto {
         this.quantidadeEstoque = quantidadeComprada;
     }
 
-    public Produto(Date data, String nome, float precoCompra, float precoVenda, int quantidadeComprada) {
-        this.data = data;
-        this.nome = nome;
-        this.precoCompra = precoCompra;
-        this.precoVenda = precoVenda;
-        this.quantidadeComprada = quantidadeComprada;
-        this.quantidadeEstoque = quantidadeComprada;
-    }
-
     public Date getData() {
         return data;
     }
